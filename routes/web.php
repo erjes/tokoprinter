@@ -50,6 +50,5 @@ Route::get('/preview-video', [VideoController::class,'preview']);
 Route::resource('crudfield', tekscontroller::class);
 Route::post('updatefield', [tekscontroller::class,'update']);
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
