@@ -10,9 +10,20 @@ use Illuminate\Http\Request;
 class customercontroller extends Controller
 {
     public function index(){
-        $printer = printer::all();
-        $transaksi = transaksi::all();
-        return view('customer.index', ['suplier' => $printer],  ['transaksi' => $transaksi]);
+        // $printer = printer::all();
+        // $transaksi = transaksi::all();
+        // return view('admin.create', ['suplier' => $printer],  ['transaksi' => $transaksi]);
+        return view('shop.index');
+    }
+
+    public function login(Request $request){
+        // $datapembelian = 'id_user' => $request->id_user;
+
+    }
+
+    public function register(Request $request){
+        // $datapembelian = 'id_user' => $request->id_user;
+
     }
 
     public function postcustomer(Request $request){

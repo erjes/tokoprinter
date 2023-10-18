@@ -1,7 +1,13 @@
 <?php
 
+use App\Http\Controllers\addproductcontroller;
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\customercontroller;
+use App\Http\Controllers\logacontroller;
+use App\Http\Controllers\logccontroller;
+use App\Http\Controllers\productscontroller;
+use App\Http\Controllers\tekscontroller;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,14 +25,31 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//routing admin
-Route::resource('admin', admincontroller::class);
-Route::post('loginadmin', [admincontroller::class, 'login']);
-Route::post('postprinter', [admincontroller::class, 'postprinter']);
+//login admin
+Route::get('loginadmin', [logacontroller::class, 'index']);
+Route::post('loginadmin', [logacontroller::class, 'login']);
+//add product
+Route::get('addproduct', [addproductcontroller::class, 'index']);
+Route::post('addproduct', [addproductcontroller::class, 'postprinter']);
+
+
+//logincustomer
+Route::get('signin', [logccontroller::class, 'index']);
+Route::post('logincustomer', [logccontroller::class, 'login']);
+//view product
+Route::resource('products', productscontroller::class);
 
 //routing customer
 Route::resource('customer', customercontroller::class);
-Route::post('login', [customercontroller::class, 'login']);
 Route::post('postcustomer', [customercontroller::class, 'postcustomer']);
 Route::post('postransaksi', [customercontroller::class, 'postransaksi']);
 
+//tampil video
+Route::get('/preview-video', [VideoController::class,'preview']);
+
+Route::resource('crudfield', tekscontroller::class);
+Route::post('updatefield', [tekscontroller::class,'update']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

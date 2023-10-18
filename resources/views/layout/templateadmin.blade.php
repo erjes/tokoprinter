@@ -9,7 +9,7 @@
   <body class="bg-light">
     <main class="container">
         <br>
-        <h1>Toko Printer</h1>
+        <h1>Admin</h1>
         @include('komponen.pesan')
         @yield('konten')
     </main>

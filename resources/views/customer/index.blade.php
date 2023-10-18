@@ -1,59 +1,67 @@
 
-       <!-- START FORM -->
+    @extends('layout.template')
+    @section('konten')
+    <style>
+        .h1-white {
+        color: black;
+        }
+        @media screen and (min-width: 768px) {
+            .card {
+        border: 1px solid black;
+        border-radius: 10px;
+        font-family: sans-serif;
+        color: black;
+        }
 
-        <!-- AKHIR FORM -->
-        @extends('layout.template')
-        @section('konten')
-        <div class="my-3 p-3 bg-body rounded shadow-sm">
-            <!-- FORM PENCARIAN -->
-            <div class="pb-3">
-              <form class="d-flex" action="" method="get">
-                  <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
-                  <button class="btn btn-secondary" type="submit">Cari</button>
-              </form>
-            </div>
+        .card-title {
+        font-size: 20px;
+        }
 
-            <!-- TOMBOL TAMBAH DATA -->
-            <div class="pb-3">
-                <a href='{{ url('absen/create') }}' class="btn btn-primary">+ Tambah Data</a>
-            </div>
+        .card-text {
+        font-size: 16px;
+        }
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="col-md-1">ID</th>
-                        <th class="col-md-1">Nama</th>
-                        <th class="col-md-3">Kelas</th>
-                        <th class="col-md-4">Materi</th>
-                        <th class="col-md-2">Mapel</th>
-                        <th class="col-md-2">Waktu</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = $dataabsen->firstItem() ?>
-                    @foreach ($dataabsen as $item)
-                    <tr>
-                        <td>{{$item->ID}}</td>
-                        <td>{{$item->Nama}}</td>
-                        <td>{{$item->Kelas}}</td>
-                        <td>{{$item->Materi}}</td>
-                        <td>{{$item->Mapel}}</td>
-                        <td>{{$item->Waktu}}</td>
-                        <td>
-                            <a href='{{ url('absen/'.$item->ID.'/edit') }}' class="btn btn-warning btn-sm">Edit</a>
-                            <form onsubmit="return confirm('Yakin akan menghapus data?')" class='d-inline' action="{{ url('absen/'.$item->ID) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <?php $i++ ?>
-                    @endforeach
-                </tbody>
-            </table>
-            {{ $dataabsen->withQueryString()->links() }}
-      </div>
+        .body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        }
+}
+    </style>
+    <ul>
+        <h1 class="h1 h1-white">Printer</h1>
+
+        <div class="row">
+            @foreach ($products as $product)
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ asset('uploads/'.$product->image_name)}}" alt="{{ $product->nama_printer }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $product->nama_printer }}</h5>
+                            <span class="currency-symbol">{{ 'Rp.'.$product->harga.',-' }}</span>
+                            <p class="card-text">{{ $product->spesifikasi }}</p>
+                            <a href="{{ route('products.show', $product) }}" class="btn btn-primary">Masukan ke Keranjang</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </ul>
     @endsection
 
 
+    <script>
+        function formatRupiahCurrency(amount) {
+        const formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+        });
+        return formatter.format(amount);
+    }
+
+    // Example usage:
+        const amount = 1234567.89; // Replace with your variable
+        const formattedAmount = formatRupiahCurrency(amount);
+        document.getElementById('formatIDR').textContent = formattedAmount;
+
+    </script>

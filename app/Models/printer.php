@@ -9,14 +9,16 @@ class printer extends Model
 {
     use HasFactory;
     protected $table = 'tb_printer';
+    public $timestamps = false;
 
     protected $primaryKey = 'id_printer';
 
     protected $fillable = [
-        'id_transaksi',
+        'id_printer',
         'nama_printer',
         'spesifikasi',
         'harga',
         'stok',
+        'image_name'
     ];
 }

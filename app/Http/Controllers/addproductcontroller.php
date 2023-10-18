@@ -7,14 +7,8 @@ use App\Models\printer;
 use App\Models\transaksi;
 use Illuminate\Http\Request;
 
-class admincontroller extends Controller
+class addproductcontroller extends Controller
 {
-    // public function index()
-    // {
-    //     $suplier = Suplier::all();
-    //     $barang = Barang::all();
-    //     return view('transaksi.create', ['suplier' => $suplier],  ['barang' => $barang]);
-    // }
 
     // public function getSuplier($KodeSuplier)
     // {
@@ -86,12 +80,14 @@ class admincontroller extends Controller
         $printer = printer::all();
         $customer = customer::all();
         $transaksi = transaksi::all();
-        return view('admin.index', ['printer' => $printer],  ['customer' => $customer], ['transaksi' => $transaksi]);
+        return view('admin.addproduct', ['printer' => $printer],  ['customer' => $customer], ['transaksi' => $transaksi]);
     }
+
+
 
     public function create()
     {
-        return view('admin.create');
+        return view('admin.addproduct');
     }
 
     public function postprinter(Request $request)
@@ -104,29 +100,31 @@ class admincontroller extends Controller
             'spesifikasi' => 'required',
             'harga' => 'required',
             'stok' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan aturan validasi sesuai kebutuhan Anda
+            // 'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan aturan validasi sesuai kebutuhan Anda
         ]);
 
-        $datapembelian = [
+        $gambar = $request->file('gambar');
+
+        // Generate nama unik untuk gambar (misalnya, menggunakan timestamp)
+        $nama_gambar = time() . '_' . $request->id_printer . '.' . $gambar->getClientOriginalExtension();
+
+        $dataprinter = [
             'id_printer'  => $request->id_printer,
             'nama_printer' => $request->nama_printer,
             'spesifikasi' => $request->spesifikasi,
             'harga' => $request->harga,
             'stok' => $request->stok,
+            'image_name' => $nama_gambar
         ];
 
-        printer::create($datapembelian);
 
-        // Ambil file gambar dari permintaan
-        $gambar = $request->file('gambar');
+        printer::create($dataprinter);
 
-        // Generate nama unik untuk gambar (misalnya, menggunakan timestamp)
-        $nama_gambar = time() . '_' . $gambar->getClientOriginalName();
 
         // Simpan gambar ke direktori yang ditentukan (contoh: public/uploads)
         $gambar->move(public_path('uploads'), $nama_gambar);
 
         // return response()->json(['message' => 'Gambar Berhasil Di Upload'], 201);
-        return redirect()->route('admin.index')->with('success','Data telah diinput');
+        return redirect()->route('admin.addproduct')->with('success','Data telah diinput');
     }
 }
