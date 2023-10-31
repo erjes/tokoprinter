@@ -21,4 +21,8 @@ class printer extends Model
         'stok',
         'image_name'
     ];
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_printer');
+    }
 }

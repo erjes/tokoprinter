@@ -19,4 +19,14 @@ class user extends Model
         'password',
         'role'
     ];
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_user');
+    }
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class, 'id_user');
+    }
 }

@@ -26,5 +26,7 @@ class logccontroller extends Controller
             ]);
         }
     }
+
+
 }
 

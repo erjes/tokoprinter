@@ -48,7 +48,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <img class="nav-link" href="#" src="{{ asset('icons/shopping-cart.png') }}" width="50" height="50" >
+                        <img class="nav-link" href="{{ url('cart') }}" src="{{ asset('icons/shopping-cart.png') }}" width="50" height="50" >
                     </li>
 
                     <li class="nav-item">

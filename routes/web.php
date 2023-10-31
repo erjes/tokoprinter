@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\addproductcontroller;
 use App\Http\Controllers\admincontroller;
+use App\Http\Controllers\cartcontroller;
 use App\Http\Controllers\customercontroller;
 use App\Http\Controllers\logacontroller;
 use App\Http\Controllers\logccontroller;
@@ -50,5 +51,10 @@ Route::get('/preview-video', [VideoController::class,'preview']);
 Route::resource('crudfield', tekscontroller::class);
 Route::post('updatefield', [tekscontroller::class,'update']);
 
+//cart
+Route::get('/cart', [cartcontroller::class, 'index'])->name('cart.index');
+Route::post('/cart/add', [cartcontroller::class, 'add'])->name('cart.add');
+Route::post('/cart/remove/{id}', [cartcontroller::class, 'remove'])->name('cart.remove');
+Route::get('/checkout', [cartcontroller::class, 'checkout'])->name('checkout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

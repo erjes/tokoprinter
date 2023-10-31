@@ -18,9 +18,24 @@ class transaksi extends Model
         'tanggal',
         'quantity',
         'subtotal',
+        'status_transaksi',
         'id_user',
         'id_printer',
         'id_customer',
-        'status_transaksi'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function printer()
+    {
+        return $this->belongsTo(Printer::class, 'id_printer');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'id_customer');
+    }
 }
