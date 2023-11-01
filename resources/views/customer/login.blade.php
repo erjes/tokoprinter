@@ -1,56 +1,6 @@
 @extends('layout.template')
 @section('konten')
-<style>
-.card {
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.card-header {
-  background-color: #007bff;
-  color: white;
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-}
-
-.card-body {
-  padding: 1.25rem;
-}
-
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-button[type="submit"] {
-  background-color: #007bff;
-  color: white;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  transition: all 0.15s ease-in-out;
-}
-
-button[type="submit"]:hover {
-  background-color: #0069d9;
-}
-
-
-</style>
+<link rel="stylesheet"type="text/css" href="{{ asset('css/style.css') }}">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

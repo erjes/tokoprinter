@@ -55,16 +55,23 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <img class="nav-link" href="{{ url('cart') }}" src="{{ asset('icons/shopping-cart.png') }}" width="50" height="50" >
+                        <a class="nav-link" href="{{ url('cart') }}">
+                            <img src="{{ asset('icons/shopping-cart.png') }}" width="40" height="40">
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <img class="nav-link" href="#" src="{{ asset('icons/message.png') }}" width="50" height="50" >
+                        <a class="nav-link" href="#">
+                            <img src="{{ asset('icons/message.png') }}" width="40" height="40">
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <img class="nav-link" href="#" src="{{ asset('icons/user.png') }}" width="50" height="50" >
+                        <a class="nav-link" href="#">
+                            <img src="{{ asset('icons/user.png') }}" width="40" height="40">
+                        </a>
                     </li>
+
                 </ul>
             </div>
         </div>
