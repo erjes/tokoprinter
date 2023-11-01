@@ -1,3 +1,4 @@
+<link rel="stylesheet"type="text/css" href="{{ asset('css/style.css') }}">
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>

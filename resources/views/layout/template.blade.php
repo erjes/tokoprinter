@@ -20,6 +20,10 @@
             color: #fff;
         }
 
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+
         .footer-custom {
             background-color: #395c82;
             color: #fff;
