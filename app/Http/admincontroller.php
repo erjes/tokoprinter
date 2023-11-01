@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\user;
 use Illuminate\Http\Request;
 
-class logacontroller extends Controller
+class admincontroller extends Controller
 {
     public function index(){
         return view('admin.login');

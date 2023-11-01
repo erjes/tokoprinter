@@ -10,12 +10,14 @@ class user extends Model
     use HasFactory;
 
     protected $table = 'tb_user';
+    public $timestamps = false;
 
     protected $primaryKey = 'id_user';
 
     protected $fillable = [
         'id_user',
-        'username',
+        'nama_lengkap',
+        'email',
         'password',
         'role'
     ];

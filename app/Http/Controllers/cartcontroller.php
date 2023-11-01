@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\transaksi;
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+class cartcontroller extends Controller
 {
     public function index()
     {

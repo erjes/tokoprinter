@@ -34,6 +34,9 @@
             left: 0;
             right: 0;
         }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
 
 
     </style>

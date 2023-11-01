@@ -5,25 +5,54 @@ namespace App\Http\Controllers;
 use App\Models\customer;
 use App\Models\printer;
 use App\Models\transaksi;
+use App\Models\user;
 use Illuminate\Http\Request;
 
 class customercontroller extends Controller
 {
     public function index(){
-        // $printer = printer::all();
-        // $transaksi = transaksi::all();
-        // return view('admin.create', ['suplier' => $printer],  ['transaksi' => $transaksi]);
-        return view('shop.index');
+        return view('customer.login');
+    }
+
+    public function regindex(){
+        return view('customer.register');
     }
 
     public function login(Request $request){
-        // $datapembelian = 'id_user' => $request->id_user;
+        $email   = $request->email;
+        $password = $request->password;
 
+        $user = user::where('email', $email)->where('password', $password)->first();
+
+        if ($user) {
+            return redirect('/products');
+        }
+        else {
+            // return response()->json(['message' => 'Username atau Password Salah'], 401);
+            return redirect()->back()->withErrors([
+             'Email atau Password Salah',
+            ]);
+        }
     }
-
     public function register(Request $request){
-        // $datapembelian = 'id_user' => $request->id_user;
+        $request->validate([
+            'nama_lengkap'  => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
 
+        $dataregister = [
+            'nama_lengkap'  => $request->nama_lengkap,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => 'customer',
+        ];
+
+
+
+        user::create($dataregister);
+
+        return redirect('login')->with('success','Berhasil Register');
     }
 
     public function postcustomer(Request $request){

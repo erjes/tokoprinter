@@ -60,9 +60,9 @@
     <section class="cart">
         <h2>Keranjang Belanja</h2>
 
-        @if (Cart::isEmpty())
+        {{-- @if (transaksi::isEmpty()) --}}
             <p>Keranjang Anda masih kosong.</p>
-        @else
+        {{-- @else --}}
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -73,25 +73,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (Cart::content() as $item)
+                    {{-- @foreach (transaksi::content() as $item) --}}
                         <tr>
-                            <td>{{ $item->name }}</td>
+                            {{-- <td>{{ $item->name }}</td>
                             <td>{{ $item->quantity }}</td>
                             <td>{{ 'Rp.'.number_format($item->price, 0, ',', '.') }}</td>
-                            <td>{{ 'Rp.'.number_format($item->subtotal, 0, ',', '.') }}</td>
+                            <td>{{ 'Rp.'.number_format($item->subtotal, 0, ',', '.') }}</td> --}}
                         </tr>
-                    @endforeach
+                    {{-- @endforeach --}}
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="3">Total</td>
-                        <td>{{ 'Rp.'.number_format(Cart::total(), 0, ',', '.') }}</td>
+                        {{-- <td>{{ 'Rp.'.number_format(transaksi::total(), 0, ',', '.') }}</td> --}}
                     </tr>
                 </tfoot>
             </table>
 
             <a href="{{ route('checkout') }}" class="btn btn-primary">Lanjutkan ke Pembayaran</a>
-        @endif
+        {{-- @endif --}}
     </section>
 
 @endsection
