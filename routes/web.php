@@ -5,6 +5,8 @@ use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\cartcontroller;
 use App\Http\Controllers\customercontroller;
 use App\Http\Controllers\productscontroller;
+use App\Http\Controllers\transaksicontroller;
+use App\Models\transaksi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +30,8 @@ Route::post('loginadmin', [admincontroller::class, 'login']);
 Route::get('addproduct', [addproductcontroller::class, 'index']);
 Route::post('addproduct', [addproductcontroller::class, 'postprinter']);
 
+//
+Route::get('transaksi', [transaksicontroller::class, 'index']);
 
 //logincustomer
 Route::get('login', [customercontroller::class, 'index']);

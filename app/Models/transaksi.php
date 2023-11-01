@@ -16,7 +16,7 @@ class transaksi extends Model
     protected $fillable = [
         'id_transaksi',
         'tanggal',
-        'quantity',
+        'jumlah',
         'subtotal',
         'status_transaksi',
         'id_user',
